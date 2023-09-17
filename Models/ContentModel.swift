@@ -1,13 +1,14 @@
 //
-//  FilmModel.swift
+//  ContentModel.swift
 //  InfoFilm
 //
-//  Created by Dima on 05.09.2023.
+//  Created by Dima on 15.09.2023.
 //
 
 import Foundation
-// MARK: - DeviceInformation
-struct MoviesInformation: Codable {
+
+// MARK: - ContentInfo
+struct ContentInfo: Codable {
     let page: Int
     let results: [Result]
     let totalPages, totalResults: Int
@@ -21,26 +22,27 @@ struct MoviesInformation: Codable {
 
 // MARK: - Result
 struct Result: Codable {
-    let adult: Bool //
-    let backdropPath: String //
+    let adult: Bool
+    let backdropPath: String
     let id: Int
-    let title: String //
-    let originalLanguage: OriginalLanguage //
-    let originalTitle, overview: String
-    let posterPath: String
+    let title: String?
+    let originalLanguage: OriginalLanguage
+    let originalTitle: String?
+    let overview, posterPath: String
     let mediaType: MediaType
     let genreIDS: [Int]
-    let popularity: Double  //
-    let releaseDate: String
-    let video: Bool //
-    let voteAverage: Double //
-    let voteCount: Int //
+    let popularity: Double
+    let releaseDate: String?
+    let video: Bool?
+    let voteAverage: Double
+    let voteCount: Int
+    let name, originalName, firstAirDate: String?
+    let originCountry: [String]?
 
     enum CodingKeys: String, CodingKey {
         case adult
         case backdropPath = "backdrop_path"
-        case id
-        case title
+        case id, title
         case originalLanguage = "original_language"
         case originalTitle = "original_title"
         case overview
@@ -52,15 +54,21 @@ struct Result: Codable {
         case video
         case voteAverage = "vote_average"
         case voteCount = "vote_count"
+        case name
+        case originalName = "original_name"
+        case firstAirDate = "first_air_date"
+        case originCountry = "origin_country"
     }
 }
 
 enum MediaType: String, Codable {
     case movie = "movie"
+    case tv = "tv"
 }
 
 enum OriginalLanguage: String, Codable {
+    case da = "da"
     case en = "en"
-    case fr = "fr"
-    case hi = "hi"
+    case ja = "ja"
+    case pl = "pl"
 }
