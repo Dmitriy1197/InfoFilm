@@ -22,9 +22,9 @@ struct ContentInfo: Codable {
 
 // MARK: - Result
 struct Result: Codable {
+    let id: Int
     let adult: Bool
     let backdropPath: String
-    let id: Int
     let title: String?
     let originalLanguage: OriginalLanguage
     let originalTitle: String?
