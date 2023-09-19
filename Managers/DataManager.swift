@@ -12,8 +12,8 @@ class DataManager{
     
     static let shared = DataManager()
     private let realm = try? Realm()
-    var contentList = [RealmResult]()
     var contentFromRealmList = [Result]()
+    
     func contentExists(withID id: Int) -> Bool {
         let exist = (realm?.objects(RealmResult.self).filter("id == \(id)").count)! > 0
         return exist
@@ -48,36 +48,7 @@ class DataManager{
             }
         }
     }
-    
-//    func getFromRealm() -> [RealmResult] {
-//        var filmList = [RealmResult]()
-//        guard let gettingResults = realm?.objects(RealmResult.self) else { return [] }
-//
-//        for realmResult in gettingResults {
-////             Создаем экземпляр структуры Result на основе данных RealmResult
-////            let result = Result(
-////                id: realmResult.id,
-////                title: realmResult.title,
-////                originalTitle: realmResult.originalTitle,
-////                overview: realmResult.overview,
-////                posterPath: realmResult.posterPath,
-////                genreIDS: Array(realmResult.genreIDS),
-////                popularity: realmResult.popularity,
-////                releaseDate: realmResult.releaseDate,
-////                voteAverage: realmResult.voteAverage,
-////                voteCount: realmResult.voteCount
-////            )
-//            filmList.append(realmResult)
-//        }
-//
-//        return filmList
-//    }
-//    func getFromRealm() -> [RealmResult] {
-//        guard let realm = realm else {
-//            return []
-//        }
-//        return Array(realm.objects(RealmResult.self))
-//    }
+
     func getFromRealm() -> [Result] {
         var contentFromRealm = [Result]()
 
@@ -104,24 +75,16 @@ class DataManager{
                 firstAirDate: realmResult.firstAirDate,
                 originCountry: realmResult.originCountry
             )
-            print(result)
             contentFromRealm.append(result)
         }
-
-        contentFromRealmList = contentFromRealm // Сохраняем результат в свойство contentFromRealmList
-
+        contentFromRealmList = contentFromRealm
         return contentFromRealm
     }
 
 
-//    func deleteFromRealm(_ film: RealmResult){
-//
-//        try? realm?.write({
-//            realm?.delete(film)
-//        })
-//    }
+
     func deleteFromRealm(_ film: Result) {
-        // Преобразование объекта Result в RealmResult
+     
         if let realmResultToDelete = realm?.objects(RealmResult.self).filter("id == \(film.id)").first {
             try? realm?.write {
                 realm?.delete(realmResultToDelete)

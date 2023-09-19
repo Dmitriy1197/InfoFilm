@@ -25,6 +25,7 @@ final class InfoFilmMainViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .systemBackground
         addBarItem()
         createSegmentedControl()
         setupTV()
@@ -144,7 +145,7 @@ extension InfoFilmMainViewController: UITableViewDataSource{
         
         return cell
     }
-
+    
 }
 
 //MARK: Extencion Delegate
@@ -160,7 +161,9 @@ extension InfoFilmMainViewController: UITableViewDelegate{
         detailVC.filmId = currentContent.id
         detailVC.currentContent = currentContent
         navigationController?.pushViewController(detailVC, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         100.0
     }

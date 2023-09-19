@@ -8,12 +8,12 @@
 import UIKit
 
 class InfoFilmTableViewCell: UITableViewCell {
-        static let cellID = "InfoFilmTableViewCell"
+    static let cellID = "InfoFilmTableViewCell"
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
         
-        required init?(coder: NSCoder) {
-            super.init(coder: coder)
-            
-        }
+    }
     var originalTitleLabel: UILabel!
     var genreLabel: UILabel!
     var posterImage: UIImageView!
@@ -34,15 +34,13 @@ class InfoFilmTableViewCell: UITableViewCell {
         posterImage = UIImageView()
         posterImage.contentMode = .scaleAspectFit
         posterImage.translatesAutoresizingMaskIntoConstraints = false
-//        posterImage.backgroundColor = .yellow
         contentView.addSubview(posterImage)
         
         NSLayoutConstraint.activate([
             originalTitleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
             originalTitleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
             originalTitleLabel.trailingAnchor.constraint(equalTo: posterImage.leadingAnchor, constant: -8),
-//            originalTitleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
-
+            
             genreLabel.topAnchor.constraint(equalTo: originalTitleLabel.bottomAnchor, constant: 8),
             genreLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
             genreLabel.trailingAnchor.constraint(equalTo: posterImage.leadingAnchor, constant: -8),
@@ -55,11 +53,10 @@ class InfoFilmTableViewCell: UITableViewCell {
             
         ])
     }
-
-        override func setSelected(_ selected: Bool, animated: Bool) {
-            super.setSelected(selected, animated: animated)
-
-            // Configure the view for the selected state
-        }
-
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        
     }
+    
+}

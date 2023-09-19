@@ -6,8 +6,6 @@
 //
 
 import UIKit
-import Alamofire
-
 import YouTubeiOSPlayerHelper
 
 final class TrailerViewController: UIViewController {
@@ -24,30 +22,13 @@ final class TrailerViewController: UIViewController {
         view.backgroundColor = .darkGray
         view.alpha = 0.95
         configureTrailerView()
-//        configurePlayTrailerButtonPressed1()
     }
     
-//    private var playTrailerButtonPressed = UIButton()
-//        func configurePlayTrailerButtonPressed1(){
-//            view.addSubview(playTrailerButtonPressed)
-//            playTrailerButtonPressed.translatesAutoresizingMaskIntoConstraints = false
-//            playTrailerButtonPressed.setTitle("Show trailer", for: .normal)
-//            playTrailerButtonPressed.setTitleColor(.blue, for: .normal)
-//            playTrailerButtonPressed.addTarget(self, action: #selector(configureTrailerView), for: .touchUpInside)
-//            NSLayoutConstraint.activate([
-//                playTrailerButtonPressed.topAnchor.constraint(equalTo: view.topAnchor, constant: 200),
-//                playTrailerButtonPressed.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10),
-//                playTrailerButtonPressed.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10),
-//                playTrailerButtonPressed.heightAnchor.constraint(equalToConstant: 50)
-//
-//            ])
-//        }
-    
+
     // MARK: Создание view и загрузка видео из ютуба
     
    @objc func configureTrailerView(){
         view.addSubview(trailerView)
-        trailerView.backgroundColor = .yellow
         trailerView.translatesAutoresizingMaskIntoConstraints = false
         trailerView.load(withVideoId: trailerKey)
         NSLayoutConstraint.activate([
@@ -58,4 +39,3 @@ final class TrailerViewController: UIViewController {
         ])
     }
 }
-
